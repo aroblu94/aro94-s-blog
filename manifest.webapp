@@ -18,6 +18,7 @@
 		"128": "/128x128.png",
 		"256": "/256x256.png"
 	},
+	"type": "privileged",
     "permissions": {
         "systemXHR": {
             "description": "Used to retrive news from websites"

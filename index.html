@@ -3,27 +3,51 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
-	<title>aro94's blog</title>
 
-	<link href="css/ratchet.min.css" rel="stylesheet">
-	<link href="css/ratchet-theme-ios.min.css" rel="stylesheet">
+	<link href="css/gaia/headers.css" rel="stylesheet" />
+	<link href="css/gaia/lists.css" rel="stylesheet" />
+	<link href="css/gaia/layout.css" rel="stylesheet" />
+	<link href="css/gaia/scrolling.css" rel="stylesheet" />
+	<!--link href="css/gaia/animations.css" rel="stylesheet" /-->
+	<link href="css/style.css" rel="stylesheet" />
+	<link href="css/util.css" rel="stylesheet" />
+	<link href="css/transitions.css" rel="stylesheet" />
 	
-	<script src="http://code.jquery.com/jquery.js"></script>
-	<script src="js/ratchet.min.js"></script>
+	<script src="js/jquery-2.1.1.min.js"></script>
 	<script src="js/script.js"></script>
 </head>
-<body>
-	<header class="bar bar-nav">
-		<a class="icon icon-bars pull-left" href="/index.html" data-transition="slide-out"></a>
-		<h1 class="title">Aro94's blog</h1>
-		<a class="icon icon-gear pull-right" href="/index.html" data-transition="slide-out"></a>
-	</header>
-	<div class="content">
-		<div class="content-padded">
-			<ul id="res" class="table-view">
-				<!-- Scraped text here -->
-			</ul>
-		</div>
-	</div>
+<body role='application'>
+	<section role='region' id='home' data-position="current">
+		<header class='fixed'>
+			<button id='admin'></button>
+			<menu type='toolbar'>
+				<button id='reload_home'>
+					<span class="icon icon-reload"></span>
+				</button>
+			</menu>
+			<h1>Aro94's blog</h1>
+		</header>
+		<article class="content scrollable header">
+			<section data-type='list'>
+				<ul id='res'>
+					<!-- Scraped articles here -->
+				</ul>
+			</section>
+		</article>
+	</section>
+	<section role='region' id='article-page' data-position='right'>
+		<header class='fixed'>
+			<button id='btn_back'>
+				<span class="icon icon-back"></span>
+			</button>
+			<menu type='toolbar'>
+				<button id='reload_article'></button>
+			</menu>
+			<h1>Aro94's blog</h1>
+		</header>
+		<article class="content scrollable header" id='res_article'>
+			<!-- Scraped text here -->
+		</article>
+	</section>
 </body>
 </html>
