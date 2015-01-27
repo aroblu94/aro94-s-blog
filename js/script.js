@@ -1,13 +1,44 @@
+var xhr, url, title, description, link, img;
+
 $(document).ready(function(){
-	console.log("I'm alive!");
 	fetchData();
+	
+	$(document).on('click','#admin', function() {
+		new MozActivity({
+			name: "view",
+			data: {
+				type: "url",
+				url: "http://aro94.altervista.org/blog/wp-admin/"
+			}
+		});
+	});
+	
+	$(document).on('click','.link', function() {
+		document.querySelector('#article-page').className = 'current';
+		document.querySelector('[data-position="current"]').className = 'left';
+		fetchArticle(this.id);
+	});
+	
+	$(document).on('click','#btn_back', function() {
+		$('#res_article').empty();
+		$("[data-position='current']").attr('class', 'current');
+		$("[data-position='right']").attr('class', 'right');
+	});
+	
+	$(document).on('click','#reload_home', function() {
+		$('#res').empty();
+		fetchData();
+	});
+	
+	$(document).on('click','#reload_article', function() {
+		alert("Non ancora implementato");
+	});
 });
 
 
 function fetchData() {
-	console.log("Let's start");
-	var xhr = new XMLHttpRequest({mozSystem: true});
-	var url = "http://aro94.altervista.org/feed";
+	xhr = new XMLHttpRequest({mozSystem: true});
+	url = "http://aro94.altervista.org/feed";
 	xhr.open("GET", url, true);
     xhr.timeout = 5750;
 	xhr.addEventListener('timeout', function() {
@@ -18,27 +49,54 @@ function fetchData() {
 	xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2005 00:00:00 GMT");
 	
 	xhr.onreadystatechange = function(){
-		console.log("Loaded");
         if(xhr.status === 200 && xhr.readyState === 4){
-			console.log(xhr.responseText);
-			console.log("Hey there, I'm in!");
-			list = '';      
+			var list = '';      
 			var items = xhr.responseXML.querySelectorAll('item');
 			items = Array.prototype.slice.call(items, 0);
 			items.forEach(function(item) {
-				var title = item.getElementByTagName('title')[0].textContent;
-				var description = item.getElementByTagName('description')[0].textContent;
-				console.log(title);
-				console.log(description);
-				var item = "<li class='table-view-cell media'><a class='navigate-right' href='#'><img class='media-object pull-left' src='" + img + 
-							"'><div class='media-body'>" + title + "<p>" + description + "</p></div></a></li>";
-				console.log(item);
+				title = item.getElementsByTagName('title')[0].textContent;
+				description = item.getElementsByTagName('description')[0].textContent;
+				link = item.getElementsByTagName('link')[0].textContent;
+				console.log(xhr.response.match(/<content:encoded\>\<.*\<img.*src="(\S+)"/g));
+				img;
+				if(description.length > 100) {
+					description = description.substring(0, 99) + " [...]";
+				}
+				console.log(img);
+				var item = "<li><aside class='pack-end'><img alt='placeholder' src='" + img + "'></aside>" +
+							"<a href='#' id='" + link + "' class='link'><p>" + title + "</p><p>" + description + "</p></a></li>";
 				list = list + item;
-				document.getElementById('list').appendChild(item);
-				console.log("appended!");
 			});
 			$('#res').append(list);
 		}
 	};
 	xhr.send();
+}
+
+function fetchArticle(url) {
+	console.log(url);
+	xhr = new XMLHttpRequest({mozSystem: true});
+	xhr.open("GET", url, true);
+    xhr.timeout = 5750;
+	xhr.addEventListener('timeout', function() {
+		alert('No connection 2');
+	});	
+	
+	/* Avoid browser caching */
+	xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2005 00:00:00 GMT");
+	
+	xhr.onreadystatechange = function(){
+        if(xhr.status === 200 && xhr.readyState === 4){
+        	$source = $(xhr.responseText);
+        	console.log("source ok");
+        	console.log($source);
+        	console.log($source.find('.post-page-head-area'));      	
+			$('#res_article').append($source.find('.post-page-head-area').text());
+		}
+	};
+	xhr.send();
+}
+
+function goToCard(cardNum){
+	document.querySelector('x-deck').showCard(cardNum);
 }
