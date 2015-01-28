@@ -20,7 +20,7 @@
 	<script src="js/script.js"></script>
 </head>
 <body role='application'>
-	<section role='region' id='home' data-position="current">
+	<section role='region' id='home' data-position="current" class='skin-dark'>
 		<header class='fixed'>
 			<button id='admin' data-icon='settings'></button>
 			<menu type='toolbar'>
@@ -36,16 +36,18 @@
 			</section>
 		</article>
 	</section>
-	<section role='region' id='article-page' data-position='right'>
+	<section role='region' id='article-page' data-position='right' class='skin-dark'>
 		<header class='fixed'>
 			<button id='btn_back' data-icon='back'></button>
 			<menu type='toolbar'>
 				<button id='reload_article' data-icon='sync'></button>
 			</menu>
-			<h1>Aro94's blog</h1>
+			<h1 id='title'></h1>
 		</header>
-		<article class="content scrollable header" id='res_article'>
-			<!-- Scraped text here -->
+		<article class="content scrollable header">
+			<div id='res_article'>
+				<!-- Scraped text here -->
+			</div>
 		</article>
 	</section>
 </body>
