@@ -40,7 +40,7 @@ function fetchData() {
 	xhr = new XMLHttpRequest({mozSystem: true});
 	url = "http://aro94.altervista.org/feed";
 	xhr.open("GET", url, true);
-    xhr.timeout = 5750;
+	xhr.timeout = 5750;
 	xhr.addEventListener('timeout', function() {
 		alert('No connection');
 	});	
@@ -57,13 +57,16 @@ function fetchData() {
 				title = item.getElementsByTagName('title')[0].textContent;
 				description = item.getElementsByTagName('description')[0].textContent;
 				link = item.getElementsByTagName('link')[0].textContent;
-				console.log(xhr.response.match(/<content:encoded\>\<.*\<img.*src="(\S+)"/g));
-				img;
+				console.log(item.textContent.match(/http:\/\/aro94\.altervista\.org\/blog\/wp-content\/uploads\/\S+\.png/));
+				if(item.textContent.match(/http:\/\/aro94\.altervista\.org\/blog\/wp-content\/uploads\/\S+\.png/))
+					img = "'" + item.textContent.match(/http:\/\/aro94\.altervista\.org\/blog\/wp-content\/uploads\/\S+\.png/)[0] + "'";
+				else
+					img = '/icons/placeholder.png';
 				if(description.length > 100) {
 					description = description.substring(0, 99) + " [...]";
 				}
 				console.log(img);
-				var item = "<li><aside class='pack-end'><img alt='placeholder' src='" + img + "'></aside>" +
+				var item = "<li><aside class='pack-end'><img alt='placeholder' src=" + img + "></aside>" +
 							"<a href='#' id='" + link + "' class='link'><p>" + title + "</p><p>" + description + "</p></a></li>";
 				list = list + item;
 			});
@@ -77,7 +80,7 @@ function fetchArticle(url) {
 	console.log(url);
 	xhr = new XMLHttpRequest({mozSystem: true});
 	xhr.open("GET", url, true);
-    xhr.timeout = 5750;
+	xhr.timeout = 5750;
 	xhr.addEventListener('timeout', function() {
 		alert('No connection 2');
 	});	

@@ -78,3 +78,32 @@ section[data-type="sidebar"] + section[role="region"] > header:first-child > but
 section[data-type="sidebar"] + section[role="region"] > header:first-child > a {
 	background-position: 3.5rem center;
 }
+
+/* Override list.css */
+[data-type="list"] > ul > li {
+	height: 8rem;
+}
+
+[data-type="list"] > ul > li > a {
+	height: 8rem;
+}
+
+[data-type="list"] aside img {
+	width: 7rem;
+	height: 7rem;
+	border-radius: 3.5rem;
+}
+
+/* Override gaia-icons.css */
+[data-icon]:before,
+.ligature-icons {
+	padding-top: 0.2rem;
+	color: #ffffff;
+}
+  
+
+    
+    
+    
+  
+  

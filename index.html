@@ -4,14 +4,17 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
 
+	<!-- Some Gaia components -->
 	<link href="css/gaia/headers.css" rel="stylesheet" />
 	<link href="css/gaia/lists.css" rel="stylesheet" />
 	<link href="css/gaia/layout.css" rel="stylesheet" />
 	<link href="css/gaia/scrolling.css" rel="stylesheet" />
-	<!--link href="css/gaia/animations.css" rel="stylesheet" /-->
 	<link href="css/style.css" rel="stylesheet" />
 	<link href="css/util.css" rel="stylesheet" />
 	<link href="css/transitions.css" rel="stylesheet" />
+	
+	<!-- Using gaia-icons/gaia-icons.css instead of gaia/icons.css -->
+	<link href="css/gaia-icons/gaia-icons.css" rel="stylesheet" />
 	
 	<script src="js/jquery-2.1.1.min.js"></script>
 	<script src="js/script.js"></script>
@@ -19,11 +22,9 @@
 <body role='application'>
 	<section role='region' id='home' data-position="current">
 		<header class='fixed'>
-			<button id='admin'></button>
+			<button id='admin' data-icon='settings'></button>
 			<menu type='toolbar'>
-				<button id='reload_home'>
-					<span class="icon icon-reload"></span>
-				</button>
+				<button id='reload_home' data-icon='sync'></button>
 			</menu>
 			<h1>Aro94's blog</h1>
 		</header>
@@ -37,11 +38,9 @@
 	</section>
 	<section role='region' id='article-page' data-position='right'>
 		<header class='fixed'>
-			<button id='btn_back'>
-				<span class="icon icon-back"></span>
-			</button>
+			<button id='btn_back' data-icon='back'></button>
 			<menu type='toolbar'>
-				<button id='reload_article'></button>
+				<button id='reload_article' data-icon='sync'></button>
 			</menu>
 			<h1>Aro94's blog</h1>
 		</header>
