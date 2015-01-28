@@ -72,9 +72,8 @@ function fetchData() {
 				if(description.length > 100) {
 					description = description.substring(0, 99);
 				}
-				console.log(img);
 				var item = "<li><aside class='pack-end'><img alt='placeholder' src=" + img + "></aside>" +
-							"<a href='#' id='" + link + "' class='link'><p>" + title + "</p><p>" + description + "</p></a></li>";
+						"<a href='#' id='" + link + "' class='link'><p>" + title + "</p><p>" + description + "</p></a></li>";
 				list = list + item;
 			});
 			$('#res').append(list);
@@ -84,13 +83,12 @@ function fetchData() {
 }
 
 function fetchArticle(url) {
-	console.log(url);
 	$('#url').append(url);
 	xhr = new XMLHttpRequest({mozSystem: true});
 	xhr.open("GET", url, true);
 	xhr.timeout = 5750;
 	xhr.addEventListener('timeout', function() {
-		alert('No connection 2');
+		alert("Nessuna risposta dal server. Controllare la connessione e toccare l'icona Ricarica.");
 	});	
 	
 	/* Avoid browser caching */
@@ -99,20 +97,14 @@ function fetchArticle(url) {
 	xhr.onreadystatechange = function(){
         if(xhr.status === 200 && xhr.readyState === 4){
         	$source = $(xhr.responseText);
-        	console.log("source ok");
         	date = $source.find('.post-page-head-area').text().match(/\s{3,100}(.*)\s*↔/)[1];
         	title = $source.find('.post-page-head-area').text().match(/comments\s*(.*)\s*/)[1];
         	author = $source.find('.post-page-head-area').text().match(/comments\s*(.*)\s*(.*)\s*/)[2];
         	text = $source.find('.post-page-content')[0].innerHTML;
-        	console.log($source.find('.post-page-content')[0].innerHTML);
         	article = "<h2>" + date + "</h2><p>" + text + "</p><h2>" + author + "</h2>"; 
         	$('#title').append(title);    	
 			$('#res_article').append(article);
 		}
 	};
 	xhr.send();
-}
-
-function goToCard(cardNum){
-	document.querySelector('x-deck').showCard(cardNum);
 }
