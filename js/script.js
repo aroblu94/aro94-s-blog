@@ -22,6 +22,7 @@ $(document).ready(function(){
 	$(document).on('click','#btn_back', function() {
 		$('#res_article').empty();
 		$('#title').empty();
+		$('#url').empty();
 		$("[data-position='current']").attr('class', 'skin-dark current');
 		$("[data-position='right']").attr('class', 'skin-dark right');
 	});
@@ -29,10 +30,16 @@ $(document).ready(function(){
 	$(document).on('click','#reload_home', function() {
 		$('#res').empty();
 		fetchData();
+		utils.status.show('Feed ricaricato');
 	});
 	
 	$(document).on('click','#reload_article', function() {
-		alert("Non ancora implementato");
+		$('#res_article').empty();
+		$('#title').empty();
+		url = $('#url').text();
+		$('#url').empty();
+		fetchArticle(url);
+		utils.status.show('Articolo ricaricato');
 	});
 });
 
@@ -43,7 +50,7 @@ function fetchData() {
 	xhr.open("GET", url, true);
 	xhr.timeout = 5750;
 	xhr.addEventListener('timeout', function() {
-		alert("Nessuna risposta dal server. Controllare la connessione e toccare l'icona 'ricarica'.");
+		alert("Nessuna risposta dal server. Controllare la connessione e toccare l'icona Ricarica.");
 	});	
 	
 	/* Avoid browser caching */
@@ -78,6 +85,7 @@ function fetchData() {
 
 function fetchArticle(url) {
 	console.log(url);
+	$('#url').append(url);
 	xhr = new XMLHttpRequest({mozSystem: true});
 	xhr.open("GET", url, true);
 	xhr.timeout = 5750;

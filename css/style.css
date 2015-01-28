@@ -101,11 +101,11 @@ section[data-type="sidebar"] + section[role="region"] > header:first-child > a {
 	/*color: #ffffff;*/
 }
 
-/* Override BB 
-section[role="region"] > header:first-child {
-  color: #fff;
-  background-color: #00a9dc;
-} */	
+/* Override BB */
+section[role="status"] p {
+	margin: 3rem 3rem;
+	text-align: center;
+}	
 
 /* Some useful stylings */ 
 article > div > h2, article > div > h3 {
@@ -114,7 +114,7 @@ article > div > h2, article > div > h3 {
 	font-size: 80%;
 }
 
-p > img {
+p > a > img {
 	max-width: 100%;
 }
 
@@ -184,15 +184,7 @@ p > img {
 	border-radius: 2rem;
 }
 
-#av-print > a {
-	display: block;
-	background-color: #cccccc;
-	color: white;
-	text-decoration: none;
-	text-align: center;
-	max-width: 50%;
-	margin: 0.3rem auto;
-	border-radius: 2rem;
+.av-social-count, .wp-post-image, #av-print, #url {
+	display: none;
 }
-
 
