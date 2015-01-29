@@ -13,6 +13,26 @@ $(document).ready(function(){
 		});
 	});
 	
+	$(document).on('click','#facebook', function() {
+		new MozActivity({
+			name: "view",
+			data: {
+				type: "url",
+				url: "https://www.facebook.com/pages/Aro94s-blog/180813335288867"
+			}
+		});
+	});
+	
+	$(document).on('click','#twitter', function() {
+		new MozActivity({
+			name: "view",
+			data: {
+				type: "url",
+				url: "https://twitter.com/aro94"
+			}
+		});
+	});
+	
 	$(document).on('click','#src', function() {
 		new MozActivity({
 			name: "view",
