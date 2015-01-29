@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<meta name="theme-color" content="#242d33">
 
 	<!-- Some Gaia components -->
 	<link href="css/gaia/headers.css" rel="stylesheet" />
@@ -10,6 +11,7 @@
 	<link href="css/gaia/layout.css" rel="stylesheet" />
 	<link href="css/gaia/scrolling.css" rel="stylesheet" />
 	<link href="css/gaia/status.css" rel="stylesheet" />
+	<link href="css/gaia/edit_mode.css" rel="stylesheet" />
 	
 	<!-- Some others stylish stuff -->
 	<link href="css/style.css" rel="stylesheet" />
@@ -26,14 +28,14 @@
 <body role='application'>
 	<section role='region' id='home' data-position="current" class='skin-dark'>
 		<header class='fixed'>
-			<button id='admin' data-icon='settings'></button>
+			<button id='menu' data-icon='menu'></button>
 			<menu type='toolbar'>
 				<button id='reload_home' data-icon='sync'></button>
 			</menu>
 			<h1>Aro94's blog</h1>
 		</header>
 		<article class="content scrollable header">
-			<section data-type='list'>
+			<section data-type='list' class='res'>
 				<ul id='res'>
 					<!-- Scraped articles here -->
 				</ul>
@@ -55,6 +57,49 @@
 			<span id='url'>
 				<!-- URL here -->
 			</span>
+		</article>
+	</section>
+	<section role='region' id='menu-page' data-position='current' class="skin-dark">
+		<header class='fixed'>
+			<button id='close' data-icon='close'></button>
+			<menu type='toolbar'>
+				<button></button>
+			</menu>
+			<h1>Menu</h1>
+		</header>
+		<article class="content scrollable header">
+			<section data-type='list'>
+				<ul>
+					<li>
+						<a href='#' id='admin'>
+							<aside data-icon='settings'></aside>
+							<p>Admin</p>
+							<p>Pannello di amministrazione Wordpress</p>
+						</a>
+					</li>
+					<li>
+						<a href='#' id='mailme'>
+							<aside data-icon='email'></aside>
+							<p>Email</p>
+							<p>Contattami via e-mail</p>
+						</a>
+					</li>
+				</ul>
+				<header>Altro</header>
+				<ul>
+					<li>
+						<a href='#' id='src'>
+							<aside class='pack-end' data-icon='forward'></aside>
+							<p>Sorgente</p>
+							<p>Codice sorgente su GitHub</p>
+						</a>
+					</li>
+					<li class='ver'>
+						<p></p>
+						<p>ver: 1.0</p>
+					</li>
+				</ul>	
+			</section>
 		</article>
 	</section>
 </body>

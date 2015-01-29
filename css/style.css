@@ -9,6 +9,17 @@
 	z-index: 15;
 	z-index: 100; /* -> drawer */
 }
+[data-position="left"] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transform: translateX(-100%);
+	-webkit-transform: translateX(-100%);
+	z-index: 15;
+	z-index: 100; /* -> drawer */
+}
 section[role="region"][data-position="right"] {
 	position: absolute;
 }
@@ -80,11 +91,11 @@ section[data-type="sidebar"] + section[role="region"] > header:first-child > a {
 }
 
 /* Override list.css */
-[data-type="list"] > ul > li {
+[data-type="list"].res > ul > li {
 	height: 8rem;
 }
 
-[data-type="list"] > ul > li > a {
+[data-type="list"].res > ul > li > a {
 	height: 8rem;
 }
 
@@ -92,6 +103,10 @@ section[data-type="sidebar"] + section[role="region"] > header:first-child > a {
 	width: 7rem;
 	height: 7rem;
 	border-radius: 3.5rem;
+}
+
+[data-type="list"] header {
+	color: #00aac5;
 }
 
 /* Override gaia-icons.css */
@@ -108,7 +123,7 @@ section[role="status"] p {
 }	
 
 /* Some useful stylings */ 
-article > div > h2, article > div > h3 {
+article > div > h2, article > div > h3, .ver > p {
 	text-align: center;
 	color: #657073;
 	font-size: 80%;
@@ -184,7 +199,7 @@ p > a > img {
 	border-radius: 2rem;
 }
 
-.av-social-count, .wp-post-image, #av-print, #url {
+.av-social-count, .wp-post-image, #av-print, #url, .hidden {
 	display: none;
 }
 

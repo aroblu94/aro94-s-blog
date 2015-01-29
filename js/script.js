@@ -13,6 +13,26 @@ $(document).ready(function(){
 		});
 	});
 	
+	$(document).on('click','#src', function() {
+		new MozActivity({
+			name: "view",
+			data: {
+				type: "url",
+				url: "https://github.com/aroblu94/aro94-s-blog"
+			}
+		});
+	});
+	
+	$(document).on('click', '#mailme', function() {
+		new MozActivity({
+			name: "new",
+			data: {
+        	    type: "mail",
+            	url: "mailto:aroblu94@gmail.com"
+            }
+        });
+	});
+	
 	$(document).on('click','.link', function() {
 		document.querySelector('#article-page').className = 'skin-dark current';
 		document.querySelector('[data-position="current"]').className = 'skin-dark left';
@@ -40,6 +60,16 @@ $(document).ready(function(){
 		$('#url').empty();
 		fetchArticle(url);
 		utils.status.show('Articolo ricaricato');
+	});
+	
+	$(document).on('click', '#menu', function() {
+		$("#home").hide();
+		$("#menu-page").show();
+	});
+	
+	$(document).on('click', '#close', function() {
+		$("#menu-page").hide();
+		$("#home").show();
 	});
 });
 
