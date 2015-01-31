@@ -115,8 +115,8 @@ function fetchData() {
 				title = item.getElementsByTagName('title')[0].textContent;
 				description = item.getElementsByTagName('description')[0].textContent;
 				link = item.getElementsByTagName('link')[0].textContent;
-				if(item.textContent.match(/http:\/\/aro94\.altervista\.org\/blog\/wp-content\/uploads\/\S+\.png/))
-					img = "'" + item.textContent.match(/http:\/\/aro94\.altervista\.org\/blog\/wp-content\/uploads\/\S+\.png/)[0] + "'";
+				if(item.textContent.match(/http:\/\/aro94\.altervista\.org\/blog\/wp-content\/uploads\/\S+\.(?:jpg|gif|png|jpeg)/))
+					img = item.textContent.match(/http:\/\/aro94\.altervista\.org\/blog\/wp-content\/uploads\/\S+\.(?:jpg|gif|png|jpeg)/)[0];
 				else
 					img = '/icons/placeholder.png';
 				if(description.length > 100) {
