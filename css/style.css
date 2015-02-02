@@ -199,6 +199,20 @@ p > a > img {
 	border-radius: 2rem;
 }
 
+#navigation_toolbar {
+	text-align: center;
+	font-weight: bold;
+}
+
+#navigation_back, #navigation_forward {
+	text-decoration: none;
+	color: #00aac5;
+}
+
+#separator {
+ 	color: #657073;
+}
+ 
 .av-social-count, .wp-post-image, #av-print, #url, .hidden {
 	display: none;
 }

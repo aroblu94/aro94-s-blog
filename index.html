@@ -12,6 +12,7 @@
 	<link href="css/gaia/scrolling.css" rel="stylesheet" />
 	<link href="css/gaia/status.css" rel="stylesheet" />
 	<link href="css/gaia/edit_mode.css" rel="stylesheet" />
+	<link href="css/gaia/buttons.css" rel="stylesheet" />
 	
 	<!-- Some others stylish stuff -->
 	<link href="css/style.css" rel="stylesheet" />
@@ -23,6 +24,8 @@
 	
 	<script src="js/jquery-2.1.1.min.js"></script>
 	<script src="js/script.js"></script>
+	<script src="js/scrape.js"></script>
+	<script src="js/functions.js"></script>
 	<script src="js/status.js"></script>
 </head>
 <body role='application'>
@@ -40,6 +43,11 @@
 					<!-- Scraped articles here -->
 				</ul>
 			</section>
+			<div id='navigation_toolbar' class='hidden'>
+				<a id='navigation_back' href='#'>< Precedente</a>
+				<a id='separator'>|</a>
+				<a id='navigation_forward' href='#'>Successiva ></a>
+			</div>
 		</article>
 	</section>
 	<section role='region' id='article-page' data-position='right' class='skin-dark'>
@@ -71,12 +79,22 @@
 			<section data-type='list'>
 				<ul>
 					<li>
+						<a href='#' id='go_home'>
+							<aside data-icon='notifications'></aside>
+							<p>Home</p>
+							<p>Torna agli articoli più recenti</p>
+						</a>
+					</li>
+					<li>
 						<a href='#' id='admin'>
 							<aside data-icon='settings'></aside>
 							<p>Admin</p>
 							<p>Pannello di amministrazione Wordpress</p>
 						</a>
 					</li>
+				</ul>
+				<header>Contatti</header>
+				<ul>
 					<li>
 						<a href='#' id='mailme'>
 							<aside data-icon='email'></aside>
@@ -110,7 +128,7 @@
 					</li>
 					<li class='ver'>
 						<p></p>
-						<p>ver: 1.0.1</p>
+						<p>ver: 1.1</p>
 					</li>
 				</ul>	
 			</section>
