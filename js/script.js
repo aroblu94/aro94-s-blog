@@ -3,6 +3,7 @@ start = 0;
 stop = 10;
 
 $(document).ready(function(){
+	init();
 	fetchData(start, stop);
 	
 	$(document).on('click','#admin', function() {
@@ -58,6 +59,7 @@ $(document).ready(function(){
 	$(document).on('click','.link', function() {
 		document.querySelector('#article-page').className = 'skin-dark current';
 		document.querySelector('[data-position="current"]').className = 'skin-dark left';
+		read(this.id);
 		fetchArticle(this.id);
 	});
 	

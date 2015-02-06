@@ -18,7 +18,7 @@ function fetchData(start, stop) {
 			items = Array.prototype.slice.call(items, 0);
 			console.log(items);
 			for(i = start; i < stop; i++) {
-				console.log(items[i]);
+				//console.log(items[i]);
 				title = items[i].getElementsByTagName('title')[0].textContent;
 				description = items[i].getElementsByTagName('description')[0].textContent;
 				link = items[i].getElementsByTagName('link')[0].textContent;
@@ -29,12 +29,30 @@ function fetchData(start, stop) {
 				if(description.length > 100) {
 					description = description.substring(0, 99);
 				}
+				
+				/* local storage */
+				data = {
+					'link':link,
+					'read':0
+				};
+				save(data);
+				
+				alreadyRead = isRead(link);
+				
+				/* already read? */
+				if(alreadyRead)
+					console.log(link + " READ");
+				else
+					console.log(link + " NOT READ");
+				
 				var item = "<li><aside class='pack-end'><img alt='placeholder' src=" + img + "></aside>" +
 						"<a href='#' id='" + link + "' class='link'><p>" + title + "</p><p>" + description + "</p></a></li>";
 				list = list + item;
 			};
 			$('#res').append(list);
 			$('#navigation_toolbar').attr('class', '');
+			/* DEBUG ONLY */
+			getData();
 		}
 	};
 	xhr.send();
