@@ -1,13 +1,13 @@
-/* LOCAL STORAGE */
+/* LOCAL STORAGE 
 
-/* If counter key doesn't exist, create and initialize. */
+/* If counter key doesn't exist, create and initialize. 
 function init(){	
     if (isNaN(parseInt(localStorage.getItem('counter')))) {
         localStorage.setItem('counter', '0');
     }
 }
 
-/* Save data in the local storage */
+/* Save data in the local storage 
 function save(data){
 	alreadySaved = false;
 	count = parseInt(localStorage.getItem('counter'));
@@ -57,7 +57,7 @@ function isRead(link) {
 	return alreadyRead;
 }
 
-/* DEBUG ONLY */
+/* DEBUG ONLY 
 function getData(){
 	console.log('getting');
 	count = parseInt(localStorage.getItem('counter'));
@@ -69,3 +69,75 @@ function getData(){
 	}
 	console.log(count);
 }
+
+
+*/
+
+
+
+
+
+/* alternative version */
+/* uso la js Object Oriented, in questo modo delego tutti i gli accessi all'oggetto DB*/
+function DB(){
+  
+  /* ogni volta che viene creato un oggetto db si va a cercare se esiste già in memoria, se si lo si carica
+  nella variabile db, altrimenti db viene inizializzato a []. questo è utile perchè la get può prendere i valori 
+  anziche dal local storage dalla variabile.*/
+  var db=init();
+      
+  /* ogni volta che viene invocato il save si riscrive l'intero oggetto db (che viene prima aggiornato) nel localstorage */    
+  /* il formato presunto di obj è { link:link,read:false} */
+  this.save=function(obj){
+    if(!contains(db,obj)){
+      localStorage.setItem('db',JSON.stringify(db));
+    }
+  };
+
+  /* la get rende direttamente db, perchè è aggiornato col valore in memoria locale */
+  this.get=function(){
+    return db;
+  };
+  
+  this.read=function(link){
+    for(var i=0;i<db.length;i++){
+      if(db[i].link==link){
+        db[i].read=true;
+        localStorage.setItem('db',JSON.stringify(db));
+      }
+    }
+  };
+  
+  this.isRead=function(link){
+    for(var i=0;i<db.length;i++){
+      if(db[i].link==link){
+        return db[i].read;
+      }
+    }
+  };
+  
+  return this;
+}
+
+function init(){
+  var db=new Array();
+  var initdb=JSON.stringify(db)
+  if ((localStorage.getItem('db'))!=null) {
+      localStorage.setItem('db',initdb );
+      return db;
+  }else{
+    return JSON.parse(localStorage.getItem('db'));
+  }
+}
+
+
+function contains(a, obj) {
+    if(a!=null){
+      for (var i = 0; i < a.length; i++) {
+          if (a[i].link === obj.link) {
+              return true;
+          }
+      }
+    }
+    return false;
+};

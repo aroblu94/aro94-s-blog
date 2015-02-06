@@ -3,8 +3,8 @@ start = 0;
 stop = 10;
 
 $(document).ready(function(){
-	init();
-	fetchData(start, stop);
+  var db=new DB();
+	fetchData(start, stop,db);
 	
 	$(document).on('click','#admin', function() {
 		new MozActivity({
@@ -75,15 +75,15 @@ $(document).ready(function(){
 		$('#navigation_toolbar').attr('class', 'hidden');
 		$('#res').empty();
 		if($('#res').attr('class') == '1')
-			fetchData(0, 10);
+			fetchData(0, 10,db);
 		else if($('#res').attr('class') == '2')
-			fetchData(10, 20);
+			fetchData(10, 20,db);
 		else if($('#res').attr('class') == '3')
-			fetchData(20, 30);
+			fetchData(20, 30,db);
 		else if($('#res').attr('class') == '4')
-			fetchData(30, 40);
+			fetchData(30, 40,db);
 		else
-			fetchData(40, 50);
+			fetchData(40, 50,db);
 		utils.status.show('Feed ricaricato');
 	});
 	
@@ -111,7 +111,7 @@ $(document).ready(function(){
 		stop = stop - 10;
 		$('#navigation_toolbar').attr('class', 'hidden');
 		$('#res').empty();
-		fetchData(start, stop);
+		fetchData(start, stop,db);
 	});
 	
 	$(document).on('click', '#navigation_forward', function() {
@@ -119,7 +119,7 @@ $(document).ready(function(){
 		stop = stop + 10;
 		$('#navigation_toolbar').attr('class', 'hidden');
 		$('#res').empty();
-		fetchData(start, stop);
+		fetchData(start, stop,db);
 	});
 	
 	$(document).on('click', '#go_home', function() {
@@ -127,7 +127,7 @@ $(document).ready(function(){
 		stop = 10;
 		$('#navigation_toolbar').attr('class', 'hidden');
 		$('#res').empty();
-		fetchData(start, stop);
+		fetchData(start, stop,db);
 		$("#menu-page").hide();
 		$("#home").show();
 		utils.status.show('Torno alla Home');
