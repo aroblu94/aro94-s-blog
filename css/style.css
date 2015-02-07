@@ -217,3 +217,20 @@ p > a > img {
 	display: none;
 }
 
+.article-unread {
+  position: absolute;
+  top: 50%;
+  left: -.3rem;
+  display: inline-block;
+  height: .9rem;
+  width: .9rem;
+  margin-top: -.45rem;
+  border-radius: 50%;
+  background-color: #2FC9EC;
+}
+
+
+
+
+
+

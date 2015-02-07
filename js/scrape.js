@@ -1,4 +1,4 @@
-function fetchData(start, stop,db) {
+function fetchData(start, stop, db) {
 	pageNavigation();
 	xhr = new XMLHttpRequest({mozSystem: true});
 	url = "http://aro94.altervista.org/rss";
@@ -11,8 +11,8 @@ function fetchData(start, stop,db) {
 	/* Avoid browser caching */
 	xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2005 00:00:00 GMT");
 	
-	xhr.onreadystatechange = function(){
-        if(xhr.status === 200 && xhr.readyState === 4){
+	xhr.onload = function(){
+        if(xhr.status === 200){
 			var list = '';      
 			var items = xhr.responseXML.querySelectorAll('item');
 			items = Array.prototype.slice.call(items, 0);
@@ -33,26 +33,22 @@ function fetchData(start, stop,db) {
 				/* local storage */
 				data = {
 					'link':link,
-					'read':0
+					'read':false
 				};
 				db.save(data);
 				
-				alreadyRead = db.isRead(link);
-				
-				/* already read? */
-				if(alreadyRead)
-					console.log(link + " READ");
+				if(!db.isRead(link))
+					unread = '';
 				else
-					console.log(link + " NOT READ");
+					unread = ' hidden';
 				
 				var item = "<li><aside class='pack-end'><img alt='placeholder' src=" + img + "></aside>" +
-						"<a href='#' id='" + link + "' class='link'><p>" + title + "</p><p>" + description + "</p></a></li>";
+						"<a href='#' id='" + link + "' class='link'><div class='article-unread" + unread + 
+						"' aria-label='Unread'></div><p>" + title + "</p><p>" + description + "</p></a></li>";
 				list = list + item;
 			};
 			$('#res').append(list);
 			$('#navigation_toolbar').attr('class', '');
-			/* DEBUG ONLY */
-			//getData();
 		}
 	};
 	xhr.send();

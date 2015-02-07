@@ -28,6 +28,7 @@
 	<script src="js/functions.js"></script>
 	<script src="js/status.js"></script>
 	<script src="js/storage.js"></script>
+	<script src="js/debug.js"></script>
 </head>
 <body role='application'>
 	<section role='region' id='home' data-position="current" class='skin-dark'>
@@ -87,6 +88,13 @@
 						</a>
 					</li>
 					<li>
+						<a href='#' id='mark_all_read'>
+							<aside data-icon='email-mark-read'></aside>
+							<p>Leggi tutto</p>
+							<p>Segna tutti gli articoli come letti</p>
+						</a>
+					</li>
+					<li>
 						<a href='#' id='admin'>
 							<aside data-icon='settings'></aside>
 							<p>Admin</p>
@@ -129,9 +137,27 @@
 					</li>
 					<li class='ver'>
 						<p></p>
-						<p>ver: 1.1</p>
+						<p>ver: 1.2b</p>
 					</li>
-				</ul>	
+				</ul>
+				<header class='debug-class'>Debug</header>
+				<!-- DEBUG ONLY -->
+				<ul class='debug-class'>
+					<li>
+						<a href='#' id='mark_all_unread'>
+							<aside data-icon='email-mark-unread'></aside>
+							<p>Unread all</p>
+							<p>Segna tutti gli articoli come da leggere</p>
+						</a>
+					</li>
+					<li>
+						<a href'#' id='clear_db'>
+							<aside data-icon='close'></aside>
+							<p>Pulisci DB</p>
+							<p>Elimina il database locale</p>
+						</a>
+					</li>
+				</ul>
 			</section>
 		</article>
 	</section>
