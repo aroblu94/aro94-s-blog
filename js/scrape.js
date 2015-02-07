@@ -1,4 +1,4 @@
-function fetchData(start, stop) {
+function fetchData(start, stop,db) {
 	pageNavigation();
 	xhr = new XMLHttpRequest({mozSystem: true});
 	url = "http://aro94.altervista.org/rss";
@@ -35,9 +35,9 @@ function fetchData(start, stop) {
 					'link':link,
 					'read':0
 				};
-				save(data);
+				db.save(data);
 				
-				alreadyRead = isRead(link);
+				alreadyRead = db.isRead(link);
 				
 				/* already read? */
 				if(alreadyRead)
@@ -52,7 +52,7 @@ function fetchData(start, stop) {
 			$('#res').append(list);
 			$('#navigation_toolbar').attr('class', '');
 			/* DEBUG ONLY */
-			getData();
+			//getData();
 		}
 	};
 	xhr.send();
