@@ -3,13 +3,13 @@
 /* Using js Object Oriented */
 function DB() {
 	var db = init();
+	
    
 	/* il formato presunto di obj è { link:link, title:title, description:description, img:img, read:false} */
-	this.save = function(obj) {
-		if(!contains(db, obj)) {
-			db[db.length] = obj;
-			localStorage.setItem('mydb', JSON.stringify(db));
-		}
+	this.save = function(objs) {  
+	  temp=arDifference(objs,db);
+	  db=temp.concat(db);
+		localStorage.setItem('mydb', JSON.stringify(db));
 	};
 
 	this.get = function() {
@@ -83,3 +83,14 @@ function contains(a, obj) {
 	}
 	return false;
 };
+
+
+function arDifference(o,db){
+  /* fa la differenza tra i due array: cancella gli elementi già presenti nel db */
+  for(var i=o.length-1; i>=0;i--){
+      if(contains(db,o[i])){
+        o.splice(i,i+1);
+      }
+  }
+  return o;
+}
