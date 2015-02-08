@@ -16,7 +16,7 @@ function populatingDB(db) {
         if(xhr.status === 200){     
 			var items = xhr.responseXML.querySelectorAll('item');
 			items = Array.prototype.slice.call(items, 0);
-			var datas=new Array();
+			var datas = new Array();
 			for(i = 0; i < 50; i++) {
 				title = items[i].getElementsByTagName('title')[0].textContent;
 				description = items[i].getElementsByTagName('description')[0].textContent;
@@ -37,13 +37,12 @@ function populatingDB(db) {
 					'img':img,
 					'read':false
 				};
-	      datas.push(data);
+				datas.push(data);
 			}
 			db.save(datas);
 		}
 	};
 	xhr.send();
-	console.log(db.get());
 }
 
 function fetchData(start, stop, db) {
@@ -51,17 +50,14 @@ function fetchData(start, stop, db) {
 	console.log("pageNavigation() done");
 	var list = '';
 	for(i = start; i < stop; i++) {
-		console.log("ciclo " + i);
+		console.log(i);
+		console.log(db.get()[i]);
+		console.log(db[i]);
 		link = db.get()[i].link;
-		console.log(link);
 		title = db.get()[i].title;
-		console.log(title);
 		description = db.get()[i].description;
-		console.log(description);
 		img = db.get()[i].img;
-		console.log(img);
 		unread = db.get()[i].read;
-		console.log(unread);
 		
 		if(!db.isRead(link))
 			unread = '';

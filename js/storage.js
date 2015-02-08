@@ -4,18 +4,18 @@
 function DB() {
 	var db = init();
 	
-   
+
 	/* il formato presunto di obj è { link:link, title:title, description:description, img:img, read:false} */
-	this.save = function(objs) {  
-	  temp=arDifference(objs,db);
-	  db=temp.concat(db);
+	this.save = function(objs) {
+		temp = arDifference(objs,db);
+		db = temp.concat(db);
 		localStorage.setItem('mydb', JSON.stringify(db));
 	};
 
 	this.get = function() {
 		return db;
 	};
-  
+
 	this.read = function(link) {
 		for(var i = 0; i < db.length;i++) {
 			if(db[i].link == link) {
@@ -24,7 +24,7 @@ function DB() {
 			}
 		}
 	};
-  
+
 	this.isRead = function(link) {
 		for(var i = 0; i < db.length; i++) {
 			if(db[i].link == link){
@@ -86,11 +86,11 @@ function contains(a, obj) {
 
 
 function arDifference(o,db){
-  /* fa la differenza tra i due array: cancella gli elementi già presenti nel db */
-  for(var i=o.length-1; i>=0;i--){
-      if(contains(db,o[i])){
-        o.splice(i,i+1);
-      }
-  }
-  return o;
+/* fa la differenza tra i due array: cancella gli elementi già presenti nel db */
+	for(var i = o.length-1; i >= 0; i--){
+		if(contains(db,o[i])){
+			o.splice(i,i+1);
+		}
+	}
+	return o;
 }

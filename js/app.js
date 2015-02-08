@@ -1,14 +1,23 @@
 /* By disablig debug some stuff will not appear in-app */
-debug = true;
+debug = false;
 
-var xhr, url, title, description, link, img, start, stop;
+var xhr, url, title, description, link, img, start, stop, first;
 start = 0;
 stop = 10;
 
 $(document).ready(function() {
 	var db = new DB();
+	if(db.get().length == 0)
+		first = true;
+	else
+		first = false;
+
 	isDebug(debug, db, document);
 	populatingDB(db);
+	if(first) {
+		alert("Benvenuto! Essendo il primo avvio, l'app si riavvierà automaticamente per leggere correttamente il database. Premi 'OK' per continuare.");
+		location.reload(true);
+	}
 	fetchData(start, stop, db);
 	
 	$(document).on('click','#admin', function() {
