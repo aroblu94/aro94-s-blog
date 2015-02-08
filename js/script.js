@@ -8,6 +8,7 @@ stop = 10;
 $(document).ready(function() {
 	var db = new DB();
 	isDebug(debug, db, document);
+	populatingDB(db);
 	fetchData(start, stop, db);
 	
 	$(document).on('click','#admin', function() {
