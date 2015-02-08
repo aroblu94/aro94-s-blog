@@ -30,7 +30,16 @@ $(document).ready(function() {
 		});
 	});
 	
+	$(document).on('click', '#contacts', function() {
+		$('#contacts_dialog').attr('class', '');
+	});
+	
+	$(document).on('click', '#close_dialog', function() {
+		$('#contacts_dialog').attr('class', 'hidden');
+	});
+	
 	$(document).on('click','#facebook', function() {
+		$('#contacts_dialog').attr('class', 'hidden');
 		new MozActivity({
 			name: "view",
 			data: {
@@ -41,11 +50,23 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click','#twitter', function() {
+		$('#contacts_dialog').attr('class', 'hidden');
 		new MozActivity({
 			name: "view",
 			data: {
 				type: "url",
 				url: "https://twitter.com/aro94"
+			}
+		});
+	});
+	
+	$(document).on('click','#gplus', function() {
+		$('#contacts_dialog').attr('class', 'hidden');
+		new MozActivity({
+			name: "view",
+			data: {
+				type: "url",
+				url: "https://plus.google.com/u/0/+AronneBrivio"
 			}
 		});
 	});

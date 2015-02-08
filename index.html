@@ -13,6 +13,7 @@
 	<link href="css/gaia/status.css" rel="stylesheet" />
 	<link href="css/gaia/edit_mode.css" rel="stylesheet" />
 	<link href="css/gaia/buttons.css" rel="stylesheet" />
+	<link href="css/gaia/action_menu.css" rel="stylesheet" />
 	
 	<!-- Some others stylish stuff -->
 	<link href="css/style.css" rel="stylesheet" />
@@ -102,32 +103,15 @@
 						</a>
 					</li>
 				</ul>
-				<header>Contatti</header>
-				<ul>
-					<li>
-						<a href='#' id='mailme'>
-							<aside data-icon='email'></aside>
-							<p>Email</p>
-							<p>Contattami via e-mail</p>
-						</a>
-					</li>
-					<li>
-						<a href='#' id='facebook'>
-							<aside data-icon='facebook'></aside>
-							<p>Facebook</p>
-							<p>Pagina Facebook del blog</p>
-						</a>
-					</li>
-					<li>
-						<a href='#' id='twitter'>
-							<aside data-icon='twitter'></aside>
-							<p>Twitter</p>
-							<p>Seguimi su twitter</p>
-						</a>
-					</li>
-				</ul>
 				<header>Altro</header>
 				<ul>
+					<li>
+						<a href='#' id='contacts'>
+							<aside class='pack-end' data-icon='forward'></aside>
+							<p>Contatti</p>
+							<p>Contattami sui Social Network</p>
+						</a>
+					</li>
 					<li>
 						<a href='#' id='src'>
 							<aside class='pack-end' data-icon='forward'></aside>
@@ -137,7 +121,7 @@
 					</li>
 					<li class='ver'>
 						<p></p>
-						<p>ver: 1.5</p>
+						<p>ver: 1.5.1</p>
 					</li>
 				</ul>
 				<header class='debug-class'>Debug</header>
@@ -159,6 +143,16 @@
 					</li>
 				</ul>
 			</section>
+			<form role='dialog' data-type='action' class='hidden' id='contacts_dialog'>
+				<header>Contatti</header>
+				<menu>
+					<button id='mailme'>Email</button>
+					<button id='facebook'>Facebook</button>
+					<button id='twitter'>Twitter</button>
+					<button id='gplus'>Google+</button>
+					<button id='close_dialog'>Cancel</button>
+				</menu>
+			</form>
 		</article>
 	</section>
 </body>
