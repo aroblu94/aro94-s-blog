@@ -18,6 +18,9 @@ Code splitted into different files
 App now uses localStorage to store articles datas   
 Added read/unread for articles   
 Added "Mark all as read" button   
+- __v1.5.1__   
+Added Google+ link   
+External links are now under an `action menu`   
 
 ##To-Do   
 - Push notifications for new contents   
