@@ -21,6 +21,8 @@ Added "Mark all as read" button
 - __v1.5.1__   
 Added Google+ link   
 External links are now under an `action menu`   
+- __v1.5.2__   
+Corrected scraping due to changes "WordPress' side"   
 
 ##To-Do   
 - Push notifications for new contents   

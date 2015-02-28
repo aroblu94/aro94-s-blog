@@ -52,7 +52,6 @@ function fetchData(start, stop, db) {
 	for(i = start; i < stop; i++) {
 		console.log(i);
 		console.log(db.get()[i]);
-		console.log(db[i]);
 		link = db.get()[i].link;
 		title = db.get()[i].title;
 		description = db.get()[i].description;
@@ -89,8 +88,8 @@ function fetchArticle(url) {
         if(xhr.status === 200 && xhr.readyState === 4){
         	$source = $(xhr.responseText);
         	date = $source.find('.post-page-head-area').text().match(/\s{3,100}(.*)\s*↔/)[1];
-        	title = $source.find('.post-page-head-area').text().match(/comments\s*(.*)\s*/)[1];
-        	author = $source.find('.post-page-head-area').text().match(/comments\s*(.*)\s*(.*)\s*/)[2];
+        	title = $source.find('.post-page-head-area').text().match(/comment\s*(.*)\s*(.*)\s*/)[2];
+        	author = $source.find('.post-page-head-area').text().match(/comment\s*(.*)\s*(.*)\s*(.*)/)[3];
         	text = $source.find('.post-page-content')[0].innerHTML;
         	article = "<h2>" + date + "</h2><p>" + text + "</p><h2>" + author + "</h2>"; 
         	$('#title').append(title);    	
