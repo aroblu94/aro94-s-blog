@@ -212,7 +212,11 @@ p > a > img {
 #separator {
  	color: #657073;
 }
- 
+
+.text {
+	margin-top: -4rem;
+}
+
 .av-social-count, .wp-post-image, #av-print, #url, .hidden {
 	display: none;
 }

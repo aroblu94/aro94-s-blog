@@ -23,6 +23,9 @@ Added Google+ link
 External links are now under an `action menu`   
 - __v1.5.2__   
 Corrected scraping due to changes "WordPress' side"   
+- __v1.5.3__   
+Added 50 more articles, now 100 in the app   
+Corrected articles style
 
 ##To-Do   
 - Push notifications for new contents   

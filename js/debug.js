@@ -17,8 +17,18 @@ function isDebug(debug, db, document) {
 			fetchData(20, 30, db);
 		else if($('#res').attr('class') == '4')
 			fetchData(30, 40, db);
-		else
+		else if($('#res').attr('class') == '4')
 			fetchData(40, 50, db);
+		else if($('#res').attr('class') == '4')
+			fetchData(50, 60, db);
+		else if($('#res').attr('class') == '4')
+			fetchData(60, 70, db);
+		else if($('#res').attr('class') == '4')
+			fetchData(70, 80, db);
+		else if($('#res').attr('class') == '4')
+			fetchData(80, 90, db);
+		else
+			fetchData(90, 100, db);
 		$("#menu-page").hide();
 		$("#home").show();
 		utils.status.show('Unread all');

@@ -17,7 +17,7 @@ function populatingDB(db) {
 			var items = xhr.responseXML.querySelectorAll('item');
 			items = Array.prototype.slice.call(items, 0);
 			var datas = new Array();
-			for(i = 0; i < 50; i++) {
+			for(i = 0; i < 100; i++) {
 				title = items[i].getElementsByTagName('title')[0].textContent;
 				description = items[i].getElementsByTagName('description')[0].textContent;
 				link = items[i].getElementsByTagName('link')[0].textContent;
@@ -91,7 +91,7 @@ function fetchArticle(url) {
         	title = $source.find('.post-page-head-area').text().match(/comment\s*(.*)\s*(.*)\s*/)[2];
         	author = $source.find('.post-page-head-area').text().match(/comment\s*(.*)\s*(.*)\s*(.*)/)[3];
         	text = $source.find('.post-page-content')[0].innerHTML;
-        	article = "<h2>" + date + "</h2><p>" + text + "</p><h2>" + author + "</h2>"; 
+        	article = "<h2>" + date + "</h2><p class='text'>" + text + "</p><h2>" + author + "</h2>"; 
         	$('#title').append(title);    	
 			$('#res_article').append(article);
 		}
