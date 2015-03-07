@@ -22,10 +22,13 @@ Added "Mark all as read" button
 Added Google+ link   
 External links are now under an `action menu`   
 - __v1.5.2__   
-Corrected scraping due to changes "WordPress' side"   
+Fixed scraping due to changes "WordPress' side"   
 - __v1.5.3__   
 Added 50 more articles, now 100 in the app   
-Corrected articles style
+Fixed articles style   
+- __v1.5.4__   
+Fixed in-app navigation   
+Trying new `first run refresh` (actually it causes a bootloop on Android)   
 
 ##To-Do   
 - Push notifications for new contents   
