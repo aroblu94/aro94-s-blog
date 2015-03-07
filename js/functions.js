@@ -33,35 +33,35 @@ function pageNavigation() {
 		$('#navigation_back').attr('class', '');
 		$('#separator').attr('class', '');
 		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '4');
+		$('#res').attr('class', '5');
 		$('#navigation_page').append(' 5 ');
 	}
 	else if(start == 50) {
 		$('#navigation_back').attr('class', '');
 		$('#separator').attr('class', '');
 		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '4');
+		$('#res').attr('class', '6');
 		$('#navigation_page').append(' 6 ');
 	}
 	else if(start == 60) {
 		$('#navigation_back').attr('class', '');
 		$('#separator').attr('class', '');
 		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '4');
+		$('#res').attr('class', '7');
 		$('#navigation_page').append(' 7 ');
 	}
 	else if(start == 70) {
 		$('#navigation_back').attr('class', '');
 		$('#separator').attr('class', '');
 		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '4');
+		$('#res').attr('class', '8');
 		$('#navigation_page').append(' 8 ');
 	}
 	else if(start == 80) {
 		$('#navigation_back').attr('class', '');
 		$('#separator').attr('class', '');
 		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '4');
+		$('#res').attr('class', '9');
 		$('#navigation_page').append(' 9 ');
 	}
 	else {

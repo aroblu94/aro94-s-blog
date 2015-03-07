@@ -16,6 +16,13 @@ $(document).ready(function() {
 	populatingDB(db);
 	if(first) {
 		alert("Benvenuto! Essendo il primo avvio, l'app si riavvierà automaticamente per leggere correttamente il database. Premi 'OK' per continuare.");
+		/* 1st method
+		if(!window.location.hash) {
+			window.location = window.location + '#loaded';
+			window.location.reload(true);
+		}*/
+		/* 2nd method */
+		first = false;
 		location.reload(true);
 	}
 	fetchData(start, stop, db);
@@ -114,8 +121,18 @@ $(document).ready(function() {
 			fetchData(20, 30, db);
 		else if($('#res').attr('class') == '4')
 			fetchData(30, 40, db);
-		else
+		else if($('#res').attr('class') == '5')
 			fetchData(40, 50, db);
+		else if($('#res').attr('class') == '6')
+			fetchData(50, 60, db);
+		else if($('#res').attr('class') == '7')
+			fetchData(60, 70, db);
+		else if($('#res').attr('class') == '8')
+			fetchData(70, 80, db);
+		else if($('#res').attr('class') == '9')
+			fetchData(80, 90, db);
+		else
+			fetchData(90, 100, db);
 	});
 	
 	$(document).on('click','#reload_home', function() {
@@ -129,8 +146,18 @@ $(document).ready(function() {
 			fetchData(20, 30, db);
 		else if($('#res').attr('class') == '4')
 			fetchData(30, 40, db);
-		else
+		else if($('#res').attr('class') == '5')
 			fetchData(40, 50, db);
+		else if($('#res').attr('class') == '6')
+			fetchData(50, 60, db);
+		else if($('#res').attr('class') == '7')
+			fetchData(60, 70, db);
+		else if($('#res').attr('class') == '8')
+			fetchData(70, 80, db);
+		else if($('#res').attr('class') == '9')
+			fetchData(80, 90, db);
+		else
+			fetchData(90, 100, db);
 		utils.status.show('Feed ricaricato');
 	});
 	
@@ -192,8 +219,18 @@ $(document).ready(function() {
 			fetchData(20, 30, db);
 		else if($('#res').attr('class') == '4')
 			fetchData(30, 40, db);
-		else
+		else if($('#res').attr('class') == '5')
 			fetchData(40, 50, db);
+		else if($('#res').attr('class') == '6')
+			fetchData(50, 60, db);
+		else if($('#res').attr('class') == '7')
+			fetchData(60, 70, db);
+		else if($('#res').attr('class') == '8')
+			fetchData(70, 80, db);
+		else if($('#res').attr('class') == '9')
+			fetchData(80, 90, db);
+		else
+			fetchData(90, 100, db);
 		$("#menu-page").hide();
 		$("#home").show();
 		utils.status.show('Hai letto tutti gli articoli');
