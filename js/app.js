@@ -16,14 +16,15 @@ $(document).ready(function() {
 	populatingDB(db);
 	if(first) {
 		alert("Benvenuto! Essendo il primo avvio, l'app si riavvierà automaticamente per leggere correttamente il database. Premi 'OK' per continuare.");
-		/* 1st method
+		/* 1st method */
+		first = false;
 		if(!window.location.hash) {
 			window.location = window.location + '#loaded';
 			window.location.reload(true);
-		}*/
-		/* 2nd method */
+		}
+		/* 2nd method
 		first = false;
-		location.reload(true);
+		location.reload(true);*/
 	}
 	fetchData(start, stop, db);
 	
