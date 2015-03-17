@@ -1,4 +1,4 @@
-var link, title, description, img, unread;
+var unread;
 
 function populatingDB(db) {
 	xhr = new XMLHttpRequest({mozSystem: true});
@@ -47,11 +47,8 @@ function populatingDB(db) {
 
 function fetchData(start, stop, db) {
 	pageNavigation();
-	console.log("pageNavigation() done");
 	var list = '';
 	for(i = start; i < stop; i++) {
-		console.log(i);
-		console.log(db.get()[i]);
 		link = db.get()[i].link;
 		title = db.get()[i].title;
 		description = db.get()[i].description;

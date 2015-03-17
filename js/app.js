@@ -1,7 +1,13 @@
 /* By disablig debug some stuff will not appear in-app */
 debug = false;
 
-var xhr, url, title, description, link, img, start, stop, first;
+xhr = "";
+url = "";
+title = "";
+description = "";
+link = "";
+img = "";
+first = false;
 start = 0;
 stop = 10;
 
@@ -27,6 +33,38 @@ $(document).ready(function() {
 		location.reload(true);*/
 	}
 	fetchData(start, stop, db);
+	
+	/* 
+	 * Redundant scraping... used to correctly show
+	 * new articles while app opens
+	 */
+	$('#navigation_toolbar').attr('class', 'hidden');
+	$('#res').empty();
+	if($('#res').attr('class') == '1')
+		fetchData(0, 10, db);
+	else if($('#res').attr('class') == '2')
+		fetchData(10, 20, db);
+	else if($('#res').attr('class') == '3')
+		fetchData(20, 30, db);
+	else if($('#res').attr('class') == '4')
+		fetchData(30, 40, db);
+	else if($('#res').attr('class') == '5')
+		fetchData(40, 50, db);
+	else if($('#res').attr('class') == '6')
+		fetchData(50, 60, db);
+	else if($('#res').attr('class') == '7')
+		fetchData(60, 70, db);
+	else if($('#res').attr('class') == '8')
+		fetchData(70, 80, db);
+	else if($('#res').attr('class') == '9')
+		fetchData(80, 90, db);
+	else
+		fetchData(90, 100, db);
+	
+	/* Using jQuery to block unanmanaged clicks on imgs */
+	$(document).on('click', 'a img', function() {
+		return false;
+	});	
 	
 	$(document).on('click','#admin', function() {
 		new MozActivity({
@@ -134,7 +172,7 @@ $(document).ready(function() {
 			fetchData(80, 90, db);
 		else
 			fetchData(90, 100, db);
-	});
+		});
 	
 	$(document).on('click','#reload_home', function() {
 		$('#navigation_toolbar').attr('class', 'hidden');
