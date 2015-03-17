@@ -44,6 +44,16 @@ function DB() {
 	
 	};
 	
+	this.countUnread = function() {
+		var cont = 0;
+		for(var i = 0; i < db.length; i++) {
+			if(!db[i].read)
+				cont++;
+		}
+		console.log("unread: " + cont);
+		return cont;
+	};
+	
 	/* DEBUG ONLY */
 	this.unreadAll = function() {
 		for(var i = 0; i < db.length; i++) {

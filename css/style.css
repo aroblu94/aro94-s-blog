@@ -222,18 +222,29 @@ p > a > img {
 }
 
 .article-unread {
-  position: absolute;
-  top: 50%;
-  left: -.3rem;
-  display: inline-block;
-  height: .9rem;
-  width: .9rem;
-  margin-top: -.45rem;
-  border-radius: 50%;
-  background-color: #2FC9EC;
+ 	position: absolute;
+ 	top: 50%;
+ 	left: -.3rem;
+ 	display: inline-block;
+ 	height: .9rem;
+	width: .9rem;
+	margin-top: -.45rem;
+	border-radius: 50%;
+	background-color: #00aac5;
 }
 
-
+#count_unread {
+	display: inline-block;
+	margin-left: 0.5rem;
+	top: -1rem;
+	padding: 0 1rem;
+	border-radius: 1.3rem;
+	background-color: #00aac5;
+	line-height: 2.1rem;
+	font-size: smaller;
+	font-weight: 200;
+	font-style: italic;
+}
 
 
 

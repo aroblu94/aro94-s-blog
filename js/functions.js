@@ -71,4 +71,6 @@ function pageNavigation() {
 		$('#res').attr('class', '10');
 		$('#navigation_page').append(' 10 ');
 	}
+	/* ...and then, scroll to top of the page */
+	$('html,body').scrollTop(0);
 }

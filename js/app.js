@@ -40,26 +40,15 @@ $(document).ready(function() {
 	 */
 	$('#navigation_toolbar').attr('class', 'hidden');
 	$('#res').empty();
-	if($('#res').attr('class') == '1')
-		fetchData(0, 10, db);
-	else if($('#res').attr('class') == '2')
-		fetchData(10, 20, db);
-	else if($('#res').attr('class') == '3')
-		fetchData(20, 30, db);
-	else if($('#res').attr('class') == '4')
-		fetchData(30, 40, db);
-	else if($('#res').attr('class') == '5')
-		fetchData(40, 50, db);
-	else if($('#res').attr('class') == '6')
-		fetchData(50, 60, db);
-	else if($('#res').attr('class') == '7')
-		fetchData(60, 70, db);
-	else if($('#res').attr('class') == '8')
-		fetchData(70, 80, db);
-	else if($('#res').attr('class') == '9')
-		fetchData(80, 90, db);
-	else
-		fetchData(90, 100, db);
+	fetchData(0, 10, db);
+	
+	/* Appending a counter for unread posts on the header */
+	if(db.countUnread() == 0)
+		$('#count_unread').attr('class', 'hidden');
+	else {
+		$('#count_unread').attr('class', '');
+		$('#count_unread').append(db.countUnread());
+	}
 	
 	/* Using jQuery to block unanmanaged clicks on imgs */
 	$(document).on('click', 'a img', function() {
@@ -172,7 +161,15 @@ $(document).ready(function() {
 			fetchData(80, 90, db);
 		else
 			fetchData(90, 100, db);
-		});
+		/* refreshing unread counter */
+		$('#count_unread').empty();
+		if(db.countUnread() == 0)
+			$('#count_unread').attr('class', 'hidden');
+		else {
+			$('#count_unread').attr('class', '');
+			$('#count_unread').append(db.countUnread());
+		}
+	});
 	
 	$(document).on('click','#reload_home', function() {
 		$('#navigation_toolbar').attr('class', 'hidden');
@@ -198,6 +195,12 @@ $(document).ready(function() {
 		else
 			fetchData(90, 100, db);
 		utils.status.show('Feed ricaricato');
+		if(db.countUnread() == 0)
+			$('#count_unread').attr('class', 'hidden');
+		else {
+			$('#count_unread').attr('class', '');
+			$('#count_unread').append(db.countUnread());
+		}
 	});
 	
 	$(document).on('click','#reload_article', function() {
@@ -244,6 +247,13 @@ $(document).ready(function() {
 		$("#menu-page").hide();
 		$("#home").show();
 		utils.status.show('Torno alla Home');
+		/* refreshing unread counter */
+		if(db.countUnread() == 0)
+			$('#count_unread').attr('class', 'hidden');
+		else {
+			$('#count_unread').attr('class', '');
+			$('#count_unread').append(db.countUnread());
+		}
 	});
 	
 	$(document).on('click', '#mark_all_read', function() {
@@ -273,5 +283,7 @@ $(document).ready(function() {
 		$("#menu-page").hide();
 		$("#home").show();
 		utils.status.show('Hai letto tutti gli articoli');
+		/* hiding unread counter */
+		$('#count_unread').attr('class', 'hidden');
 	});
 });
