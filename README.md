@@ -29,6 +29,11 @@ Fixed articles style
 - __v1.5.4__   
 Fixed in-app navigation   
 Trying new `first run refresh` (actually it causes a bootloop on Android)   
+- __v1.6__   
+Added unread post counter   
+Added scrollTop while navigation   
+Blocked unanmanaged clicks on images   
+Fixed db refresh when app opens   
 
 ##To-Do   
 - Push notifications for new contents   
