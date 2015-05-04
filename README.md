@@ -34,6 +34,9 @@ Added unread post counter
 Added scrollTop while navigation   
 Blocked unanmanaged clicks on images   
 Fixed db refresh when app opens   
+- __v1.6.1__   
+Fixed Menu animations   
+Fixed "Contatti" dialog animations     
 
 ##To-Do   
 - Push notifications for new contents   
