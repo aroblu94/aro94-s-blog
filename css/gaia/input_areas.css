@@ -24,6 +24,7 @@ textarea {
   color: #333;
   background: #fff;
   margin: 0 0 1rem 0;
+  unicode-bidi: -moz-plaintext;
 }
 
 label:active {
@@ -495,6 +496,17 @@ html[dir="rtl"] ::-moz-placeholder {
   text-align: right;
 }
 
+html[dir="rtl"] input[type="text"],
+html[dir="rtl"] input[type="password"],
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="tel"],
+html[dir="rtl"] input[type="search"],
+html[dir="rtl"] input[type="url"],
+html[dir="rtl"] input[type="number"],
+html[dir="rtl"] textarea {
+  text-align: right;
+}
+
 html[dir="rtl"] fieldset legend {
   background: rgba(0,0,0,0.05) url(input_areas/images/dialog_rtl.svg) no-repeat 1rem calc(100% - 1rem);
 }
@@ -514,14 +526,10 @@ html[dir="rtl"] input[type="datetime-local"][disabled] {
   background-image: url(input_areas/images/dialog_disabled_rtl.svg);
 }
 
-html[dir="rtl"] form p input:focus {
-  padding: 0 1.5rem 0 3rem;
-}
-
 html[dir="rtl"] form p input + button[type="reset"],
 html[dir="rtl"] form p textarea + button[type="reset"] {
   right: auto;
-  left: -0.3rem;
+  left: 0.3rem;
 }
 
 html[dir="rtl"] form[role="search"] p {
@@ -556,5 +564,10 @@ html[dir="rtl"] form[role="search"] button[type="submit"]:after {
 .bb-editable:-moz-dir(rtl) [contenteditable="false"].invalid:before {
   left: unset;
   right: 0.8rem;
+}
+
+html[dir="rtl"] form p input:focus {
+  padding-right: 1.5rem;
+  padding-left: 3rem;
 }
 

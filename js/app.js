@@ -67,15 +67,15 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click', '#contacts', function() {
-		$('#contacts_dialog').attr('class', '');
+		$('#contacts_dialog').attr('class', 'fade-in');
 	});
 	
 	$(document).on('click', '#close_dialog', function() {
-		$('#contacts_dialog').attr('class', 'hidden');
+		$('#contacts_dialog').attr('class', 'fade-out');
 	});
 	
 	$(document).on('click','#facebook', function() {
-		$('#contacts_dialog').attr('class', 'hidden');
+		$('#contacts_dialog').attr('class', 'fade-out');
 		new MozActivity({
 			name: "view",
 			data: {
@@ -86,7 +86,7 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click','#twitter', function() {
-		$('#contacts_dialog').attr('class', 'hidden');
+		$('#contacts_dialog').attr('class', 'fade-out');
 		new MozActivity({
 			name: "view",
 			data: {
@@ -97,7 +97,7 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click','#gplus', function() {
-		$('#contacts_dialog').attr('class', 'hidden');
+		$('#contacts_dialog').attr('class', 'fade-out');
 		new MozActivity({
 			name: "view",
 			data: {
@@ -216,13 +216,11 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click', '#menu', function() {
-		$("#home").hide();
-		$("#menu-page").show();
+		$("[data-position='down']").attr('class', 'skin-dark current');
 	});
 	
 	$(document).on('click', '#close', function() {
-		$("#menu-page").hide();
-		$("#home").show();
+		$("[data-position='down']").attr('class', 'skin-dark down');
 	});
 	
 	$(document).on('click', '#navigation_back', function() {
@@ -246,8 +244,7 @@ $(document).ready(function() {
 		stop = 10;
 		$('#navigation_toolbar').attr('class', 'hidden');
 		$('#res').empty();
-		$("#menu-page").hide();
-		$("#home").show();
+		$("[data-position='down']").attr('class', 'skin-dark down');
 		fetchData(start, stop, db);
 		utils.status.show('Torno alla Home');
 		/* refreshing unread counter */
@@ -265,8 +262,7 @@ $(document).ready(function() {
 		$('#navigation_toolbar').attr('class', 'hidden');
 		$('#res').empty();
 		fetchData(0, 10, db);
-		$("#menu-page").hide();
-		$("#home").show();
+		$("[data-position='down']").attr('class', 'skin-dark down');
 		utils.status.show('Hai letto tutti gli articoli');
 		/* empty and hide unread counter */
 		$('#count_unread').empty();
