@@ -67,15 +67,16 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click', '#contacts', function() {
-		$('#contacts_dialog').attr('class', 'fade-in');
+		console.log("clicked");
+		document.querySelector("#dialog").className = 'top';
 	});
 	
 	$(document).on('click', '#close_dialog', function() {
-		$('#contacts_dialog').attr('class', 'fade-out');
+		document.querySelector("#dialog").className = 'back';
 	});
 	
 	$(document).on('click','#facebook', function() {
-		$('#contacts_dialog').attr('class', 'fade-out');
+		document.querySelector("#dialog").className = 'back';
 		new MozActivity({
 			name: "view",
 			data: {
@@ -86,7 +87,7 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click','#twitter', function() {
-		$('#contacts_dialog').attr('class', 'fade-out');
+		document.querySelector("#dialog").className = 'back';
 		new MozActivity({
 			name: "view",
 			data: {
@@ -97,7 +98,7 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click','#gplus', function() {
-		$('#contacts_dialog').attr('class', 'fade-out');
+		document.querySelector("#dialog").className = 'back';
 		new MozActivity({
 			name: "view",
 			data: {
@@ -128,8 +129,8 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click','.link', function() {
-		document.querySelector('#article-page').className = 'skin-dark current';
-		document.querySelector('[data-position="current"]').className = 'skin-dark left';
+		document.querySelector('#article-page').className = 'current';
+		document.querySelector('[data-position="current"]').className = 'left';
 		db.read(this.id);
 		fetchArticle(this.id);
 	});
@@ -138,8 +139,8 @@ $(document).ready(function() {
 		$('#res_article').empty();
 		$('#title').empty();
 		$('#url').empty();
-		$("[data-position='current']").attr('class', 'skin-dark current');
-		$("[data-position='right']").attr('class', 'skin-dark right');
+		$("[data-position='current']").attr('class', 'current');
+		$("[data-position='right']").attr('class', 'right');
 		$('#navigation_toolbar').attr('class', 'hidden');
 		$('#res').empty();
 		if($('#res').attr('class') == '1')
@@ -216,11 +217,11 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click', '#menu', function() {
-		$("[data-position='down']").attr('class', 'skin-dark current');
+		$("[data-position='down']").attr('class', 'current');
 	});
 	
 	$(document).on('click', '#close', function() {
-		$("[data-position='down']").attr('class', 'skin-dark down');
+		$("[data-position='down']").attr('class', 'down');
 	});
 	
 	$(document).on('click', '#navigation_back', function() {
@@ -244,7 +245,7 @@ $(document).ready(function() {
 		stop = 10;
 		$('#navigation_toolbar').attr('class', 'hidden');
 		$('#res').empty();
-		$("[data-position='down']").attr('class', 'skin-dark down');
+		$("[data-position='down']").attr('class', 'down');
 		fetchData(start, stop, db);
 		utils.status.show('Torno alla Home');
 		/* refreshing unread counter */
@@ -262,7 +263,7 @@ $(document).ready(function() {
 		$('#navigation_toolbar').attr('class', 'hidden');
 		$('#res').empty();
 		fetchData(0, 10, db);
-		$("[data-position='down']").attr('class', 'skin-dark down');
+		$("[data-position='down']").attr('class', 'down');
 		utils.status.show('Hai letto tutti gli articoli');
 		/* empty and hide unread counter */
 		$('#count_unread').empty();

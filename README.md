@@ -36,7 +36,12 @@ Blocked unanmanaged clicks on images
 Fixed db refresh when app opens   
 - __v1.6.1__   
 Fixed Menu animations   
-Fixed "Contatti" dialog animations     
+Fixed "Contatti" dialog animations   
+- __v1.6.2__   
+Fixed social buttons style   
+Fixed in-article images, now centered   
+Fixed in-article lists   
+Fixed in-article paragraphs, added some margin     
 
 ##To-Do   
 - Push notifications for new contents   
