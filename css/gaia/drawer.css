@@ -3,7 +3,7 @@
 * ---------------------------------- */
 
 /* Main region */
-section[role="region"] {
+/*section[role="region"] {
   width: 100%;
   transition: all 0.25s ease;
   position: relative;
@@ -15,7 +15,7 @@ section[role="region"]:target {
 }
 
 /* Hide anchor to change target */
-section[role="region"] > header:first-child > a:first-of-type {
+/*section[role="region"] > header:first-child > a:first-of-type {
   display: none;
 }
 section[role="region"]:target > header:first-child > a:first-of-type {
@@ -26,7 +26,7 @@ section[role="region"] > header:first-child > a:last-of-type {
 }
 section[role="region"]:target > header:first-child > a:last-of-type {
   display: none;
-}
+}*/
 
 
 /* Sidebar */

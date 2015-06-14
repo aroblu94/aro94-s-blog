@@ -41,7 +41,13 @@ Fixed "Contatti" dialog animations
 Fixed social buttons style   
 Fixed in-article images, now centered   
 Fixed in-article lists   
-Fixed in-article paragraphs, added some margin     
+Fixed in-article paragraphs, added some margin   
+- __v2.0__   
+Sidebar!!   
+New `Contatti` page   
+No more `mozActivity` for external links - now using `target="_blank"`   
+Bug Fix   
+All code re-written: no more jQuery, all Javascript Vanilla! (better performances)   
 
 ##To-Do   
 - Push notifications for new contents   

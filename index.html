@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, user-scalable=no" />
-	<meta name="theme-color" content="#242d33">
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, user-scalable=no"/>
+	<meta name="theme-color" content="#242d33"/>
 
 	<!-- Some Gaia components -->
-	<link href="css/gaia/headers.css" rel="stylesheet" />
-	<link href="css/gaia/lists.css" rel="stylesheet" />
-	<link href="css/gaia/layout.css" rel="stylesheet" />
-	<link href="css/gaia/scrolling.css" rel="stylesheet" />
-	<link href="css/gaia/status.css" rel="stylesheet" />
-	<link href="css/gaia/edit_mode.css" rel="stylesheet" />
-	<link href="css/gaia/buttons.css" rel="stylesheet" />
-	<link href="css/gaia/action_menu.css" rel="stylesheet" />
+	<link href="css/gaia/headers.css" rel="stylesheet"/>
+	<link href="css/gaia/lists.css" rel="stylesheet"/>
+	<link href="css/gaia/layout.css" rel="stylesheet"/>
+	<link href="css/gaia/scrolling.css" rel="stylesheet"/>
+	<link href="css/gaia/status.css" rel="stylesheet"/>
+	<link href="css/gaia/buttons.css" rel="stylesheet"/>
+	<!--link href="css/gaia/action_menu.css" rel="stylesheet"/-->
+	<link href="css/gaia/drawer.css" rel="stylesheet"/>
 	
 	<!-- Some others stylish stuff -->
 	<link href="css/style.css" rel="stylesheet" />
@@ -21,9 +21,9 @@
 	<link href="css/transitions.css" rel="stylesheet" />
 	
 	<!-- Using gaia-icons/gaia-icons.css instead of gaia/icons.css -->
-	<link href="css/gaia-icons/gaia-icons.css" rel="stylesheet" />
+	<link href="css/gaia-icons/gaia-icons-embedded.css" rel="stylesheet" />
 	
-	<script src="js/jquery-2.1.1.min.js"></script>
+	<!--script src="js/jquery-2.1.1.min.js"></script-->
 	<script src="js/app.js"></script>
 	<script src="js/scrape.js"></script>
 	<script src="js/functions.js"></script>
@@ -31,131 +31,94 @@
 	<script src="js/storage.js"></script>
 	<script src="js/debug.js"></script>
 </head>
-<body role='application' class='skin-dark'>
-	<section role='region' id='home' data-position="current">
-		<header class='fixed'>
-			<button id='menu' data-icon='menu'></button>
-			<menu type='toolbar'>
-				<button id='reload_home' data-icon='sync'></button>
+<body role="application" class="skin-dark">
+	<section data-type="sidebar">
+		<header class="fixed">
+			<menu type="toolbar">
+				<button id="close_drawer" aria-hidden="true" data-icon="close"></button>
+			</menu>
+			<h1>Menu</h1>
+		</header>
+		<nav class="header">
+			<ul>
+				<li><a href="#" id="go_home" class="drawer">Home</a></li>
+				<li><a href="#" id="mark_all_read" class="drawer">Leggi tutto</a></li>
+			</ul>
+			<h2>Altro</h2>
+			<ul>
+				<li><a href="#" id="btn_social">Contatti</a></li>
+				<li><a href="https://github.com/aroblu94/aro94-s-blog" target="_blank" class="drawer">Sorgente @ GitHub</a></li>
+				<li><a href="http://aro94.altervista.org/blog/wp-admin/" target="_blank" class="drawer">Amministra blog</a></li>
+			</ul>
+			<h2 class="debug-class">Debug</h2>
+			<ul class="debug-class">
+				<li><a href="#" id="mark_all_unread" class="drawer">Unread all</a></li>
+				<li><a href"#" id="clear_db" class="drawer">Pulisci DB</a></li>
+			</ul>
+			<h2>ver: 2.0</h2>
+		</nav>
+	</section>
+	<section role="region" id="home" data-position="current">
+		<header class="fixed">
+			<button id="menu" aria-hidden="true" data-icon="menu"></button>
+			<menu type="toolbar">
+				<button id="reload_home" aria-hidden="true" data-icon="sync"></button>
 			</menu>
 			<h1>
-				<span class='header'>Aro94's blog</span>
-				<span id='count_unread'></span>
+				<span class="header">Aro94's blog</span>
+				<span id="count_unread"></span>
 			</h1>
 		</header>
 		<article class="content scrollable header">
-			<section data-type='list' class='res'>
-				<ul id='res'>
+			<section data-type="list" class="res">
+				<ul id="res">
 					<!-- Scraped articles here -->
 				</ul>
 			</section>
-			<div id='navigation_toolbar' class='hidden'>
-				<a id='navigation_back' href='#'>< Precedente </a>
-				<a id='separator'>|</a>
-				<a id='navigation_forward' href='#'> Successiva ></a>
+			<div id="navigation_toolbar" class="hidden">
+				<a id="navigation_back" href="#">< Precedente </a>
+				<a id="separator">|</a>
+				<a id="navigation_forward" href="#"> Successiva ></a>
 			</div>
 		</article>
 	</section>
-	<section role='region' id='article-page' data-position='right'>
-		<header class='fixed'>
-			<button id='btn_back' data-icon='back'></button>
-			<menu type='toolbar'>
-				<button id='reload_article' data-icon='sync'></button>
+	<section role="region" id="article-page" data-position="right">
+		<header class="fixed">
+			<button id="btn_back" aria-hidden="true" data-icon="back"></button>
+			<menu type="toolbar">
+				<button id="reload_article" aria-hidden="true" data-icon="sync"></button>
 			</menu>
-			<h1 id='title'></h1>
+			<h1 id="title"></h1>
 		</header>
 		<article class="content scrollable header">
-			<div id='res_article'>
+			<div id="res_article">
 				<!-- Scraped text here -->
 			</div>
-			<span id='url'>
+			<span id="url">
 				<!-- URL here -->
 			</span>
 		</article>
 	</section>
-	<section role='region' id='menu-page' data-position='down'>
-		<header class='fixed'>
-			<button id='close' data-icon='close'></button>
-			<menu type='toolbar'>
-				<button></button>
+	<section role="region" data-position="down" id="contacts">
+		<header class="fixed">
+			<button aria-hidden="true" id="close_down" data-icon="close"></button>
+			<menu type="toolbar">
+				<button disabled></button>
 			</menu>
-			<h1>Menu</h1>
+			<h1>Contatti</h1>
 		</header>
 		<article class="content scrollable header">
-			<section data-type='list'>
+			<section data-type="list">
 				<ul>
-					<li>
-						<a href='#' id='go_home'>
-							<aside data-icon='notifications'></aside>
-							<p>Home</p>
-							<p>Torna agli articoli più recenti</p>
-						</a>
-					</li>
-					<li>
-						<a href='#' id='mark_all_read'>
-							<aside data-icon='email-mark-read'></aside>
-							<p>Leggi tutto</p>
-							<p>Segna tutti gli articoli come letti</p>
-						</a>
-					</li>
-					<li>
-						<a href='#' id='admin'>
-							<aside data-icon='settings'></aside>
-							<p>Admin</p>
-							<p>Pannello di amministrazione Wordpress</p>
-						</a>
-					</li>
-				</ul>
-				<header>Altro</header>
-				<ul>
-					<li>
-						<a href='#' id='contacts'>
-							<aside class='pack-end' data-icon='forward'></aside>
-							<p>Contatti</p>
-							<p>Contattami sui Social Network</p>
-						</a>
-					</li>
-					<li>
-						<a href='#' id='src'>
-							<aside class='pack-end' data-icon='forward'></aside>
-							<p>Sorgente</p>
-							<p>Codice sorgente su GitHub</p>
-						</a>
-					</li>
-					<li class='ver'>
-						<p></p>
-						<p>ver: 1.6.2</p>
-					</li>
-				</ul>
-				<header class='debug-class'>Debug</header>
-				<!-- DEBUG ONLY -->
-				<ul class='debug-class'>
-					<li>
-						<a href='#' id='mark_all_unread'>
-							<aside data-icon='email-mark-unread'></aside>
-							<p>Unread all</p>
-							<p>Segna tutti gli articoli come da leggere</p>
-						</a>
-					</li>
-					<li>
-						<a href'#' id='clear_db'>
-							<aside data-icon='close'></aside>
-							<p>Pulisci DB</p>
-							<p>Elimina il database locale</p>
-						</a>
-					</li>
+					<li><a href="#" id="mailme"><aside aria-hidden="true" data-icon='email'></aside><p>Email</p></a></li>
+					<li><a href="https://www.facebook.com/pages/Aro94s-blog/180813335288867" target="_blank"><aside class='pack-end' aria-hidden="true" data-icon='forward'></aside><p>Facebook</p></a></li>
+					<li><a href="https://github.com/aroblu94" target="_blank"><aside class='pack-end' aria-hidden="true" data-icon='forward'></aside><p>GitHub</p></a></li>
+					<li><a href="https://plus.google.com/u/0/+AronneBrivio" target="_blank"><aside class='pack-end' aria-hidden="true" data-icon='forward'></aside><p>Google+</p></a></li>
+					<li><a href="https://it.linkedin.com/in/aroblu94" target="_blank"><aside class='pack-end' aria-hidden="true" data-icon='forward'></aside><p>LinkedIn</p></a></li>
+					<li><a href="https://twitter.com/aro94" target="_blank"><aside class='pack-end' aria-hidden="true" data-icon='forward'></aside><p>Twitter</p></a></li>
+					<li><a href="https://www.youtube.com/channel/UCRHC10WU-PXaUCm7noq7WkA" target="_blank"><aside class='pack-end' aria-hidden="true" data-icon='forward'></aside><p>YouTube</p></a></li>
 				</ul>
 			</section>
-		</article>
-	</section>
-	<section role='dialog' data-type='action' data-position='back' id='dialog'>
-		<header>Contatti</header>
-		<menu>
-			<button id='mailme'>Email</button>
-			<button id='facebook'>Facebook</button>
-			<button id='twitter'>Twitter</button>
-			<button id='gplus'>Google+</button>
-			<button id='close_dialog'>Cancel</button>
 		</menu>
 	</section>
 </body>

@@ -1,8 +1,8 @@
 var unread;
 
 function populatingDB(db) {
-	xhr = new XMLHttpRequest({mozSystem: true});
-	url = "http://aro94.altervista.org/rss";
+	var xhr = new XMLHttpRequest({mozSystem: true});
+	var url = "http://aro94.altervista.org/rss";
 	xhr.open("GET", url, true);
 	xhr.timeout = 5750;
 	xhr.addEventListener('timeout', function() {
@@ -10,27 +10,27 @@ function populatingDB(db) {
 	});	
 	
 	/* Avoid browser caching */
-	xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2005 00:00:00 GMT");
+	//xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2005 00:00:00 GMT");
 	
 	xhr.onload = function(){
         if(xhr.status === 200){     
 			var items = xhr.responseXML.querySelectorAll('item');
 			items = Array.prototype.slice.call(items, 0);
 			var datas = new Array();
-			for(i = 0; i < 100; i++) {
-				title = items[i].getElementsByTagName('title')[0].textContent;
-				description = items[i].getElementsByTagName('description')[0].textContent;
-				link = items[i].getElementsByTagName('link')[0].textContent;
+			for(i = 0; i < items.length; i++) {
+				var title = items[i].getElementsByTagName('title')[0].textContent;
+				var description = items[i].getElementsByTagName('description')[0].textContent;
+				var link = items[i].getElementsByTagName('link')[0].textContent;
 				if(items[i].textContent.match(/http:\/\/aro94\.altervista\.org\/blog\/wp-content\/uploads\/\S+\.(?:jpg|gif|png|jpeg)/))
-					img = items[i].textContent.match(/http:\/\/aro94\.altervista\.org\/blog\/wp-content\/uploads\/\S+\.(?:jpg|gif|png|jpeg)/)[0];
+					var img = items[i].textContent.match(/http:\/\/aro94\.altervista\.org\/blog\/wp-content\/uploads\/\S+\.(?:jpg|gif|png|jpeg)/)[0];
 				else
-					img = '/icons/placeholder.png';
+					var img = '/icons/placeholder.png';
 				if(description.length > 100) {
-					description = description.substring(0, 99);
+					var description = description.substring(0, 99);
 				}
 			
 				/* local storage */
-				data = {
+				var data = {
 					'link':link,
 					'title':title,
 					'description':description,
@@ -42,18 +42,18 @@ function populatingDB(db) {
 			db.save(datas);
 		}
 	};
-	xhr.send();
+	xhr.send(null);
 }
 
-function fetchData(start, stop, db) {
+function fetchData(start, stop, db, callback) {
 	pageNavigation();
 	var list = '';
-	for(i = start; i < stop; i++) {
-		link = db.get()[i].link;
-		title = db.get()[i].title;
-		description = db.get()[i].description;
-		img = db.get()[i].img;
-		unread = db.get()[i].read;
+	for(var i = start; i < stop; i++) {
+		var link = db.get()[i].link;
+		var title = db.get()[i].title;
+		var description = db.get()[i].description;
+		var img = db.get()[i].img;
+		var unread = db.get()[i].read;
 		
 		if(!db.isRead(link))
 			unread = '';
@@ -65,13 +65,14 @@ function fetchData(start, stop, db) {
 				"' aria-label='Unread'></div><p>" + title + "</p><p>" + description + "</p></a></li>";
 		list = list + item;
 	}
-	$('#res').append(list);
-	$('#navigation_toolbar').attr('class', '');
+	document.getElementById("res").innerHTML = list;
+	document.getElementById("navigation_toolbar").className = "";
+	callback(db);
 }
 
 function fetchArticle(url) {
-	$('#url').append(url);
-	xhr = new XMLHttpRequest({mozSystem: true});
+	document.getElementById("url").innerHTML = url;
+	var xhr = new XMLHttpRequest({mozSystem: true});
 	xhr.open("GET", url, true);
 	xhr.timeout = 5750;
 	xhr.addEventListener('timeout', function() {
@@ -79,19 +80,28 @@ function fetchArticle(url) {
 	});	
 	
 	/* Avoid browser caching */
-	xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2005 00:00:00 GMT");
+	//xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2005 00:00:00 GMT");
 	
-	xhr.onreadystatechange = function(){
-        if(xhr.status === 200 && xhr.readyState === 4){
-        	$source = $(xhr.responseText);
-        	date = $source.find('.post-page-head-area').text().match(/\s{3,100}(.*)\s*↔/)[1];
-        	title = $source.find('.post-page-head-area').text().match(/comment\s*(.*)\s*(.*)\s*/)[2];
-        	author = $source.find('.post-page-head-area').text().match(/comment\s*(.*)\s*(.*)\s*(.*)/)[3];
-        	text = $source.find('.post-page-content')[0].innerHTML;
-        	article = "<h2>" + date + "</h2><p class='text'>" + text + "</p><h2>" + author + "</h2>"; 
-        	$('#title').append(title);    	
-			$('#res_article').append(article);
+	xhr.onload = function(){
+        if(xhr.status === 200){
+        	var source = xhr.responseText;
+			/* Creating a dummy XML to let me parse response as XML */
+			var dummyXML = document.createElement("dummyXML");
+			dummyXML.innerHTML = source;
+			var head = dummyXML.querySelector(".post-page-head-area").innerHTML;
+			var date = head.match(/\s{3,100}(.*)\s*↔/)[1];
+			var author = head.match(/comment\s*(.*)\s*(.*)\s*/)[2];
+			var title = head.match(/comment\s*(.*)\s*(.*)\s*(.*)/)[3];
+			var text = dummyXML.querySelectorAll(".post-page-content")[0].innerHTML;
+			dummyXML.innerHTML = title;
+			title = dummyXML.querySelector("h2").innerHTML;
+			var article = "<h2>" + date + "</h2><p class='text'>" + text + "</p>";//<h2>" + author + "</h2>"; 
+			document.getElementById("title").innerHTML = title;
+			document.getElementById("res_article").innerHTML = article;
+			/* Images not clickable */
+			article = document.getElementById("res_article");
+			article.getElementsByTagName("img").onclick = null;
 		}
 	};
-	xhr.send();
+	xhr.send(null);
 }

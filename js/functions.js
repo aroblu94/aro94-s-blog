@@ -1,76 +1,78 @@
 /* Function to handle navigation links */
 function pageNavigation() {
-	//$('#navigation_page').empty();
 	if(start == 0) {
-		$('#navigation_back').attr('class', 'hidden');
-		$('#separator').attr('class', 'hidden');
-		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '1');
-		$('#navigation_page').append(' 1 ');
+		document.getElementById("navigation_back").className = "hidden";
+		document.getElementById("separator").className = "hidden";
+		document.getElementById("navigation_forward").className = "";
+		document.getElementById("res").className = "1";
 	}
 	else if(start == 10) {
-		$('#navigation_back').attr('class', '');
-		$('#separator').attr('class', '');
-		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '2');
-		$('#navigation_page').append(' 2 ');
+		document.getElementById("navigation_back").className = "";
+		document.getElementById("separator").className = "";
+		document.getElementById("navigation_forward").className = "";
+		document.getElementById("res").className = "2";
 	}
 	else if(start == 20) {
-		$('#navigation_back').attr('class', '');
-		$('#separator').attr('class', '');
-		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '3');
-		$('#navigation_page').append(' 3 ');
+		document.getElementById("navigation_back").className = "";
+		document.getElementById("separator").className = "";
+		document.getElementById("navigation_forward").className = "";
+		document.getElementById("res").className = "3";
 	}
 	else if(start == 30) {
-		$('#navigation_back').attr('class', '');
-		$('#separator').attr('class', '');
-		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '4');
-		$('#navigation_page').append(' 4 ');
+		document.getElementById("navigation_back").className = "";
+		document.getElementById("separator").className = "";
+		document.getElementById("navigation_forward").className = "";
+		document.getElementById("res").className = "4";
 	}
 	else if(start == 40) {
-		$('#navigation_back').attr('class', '');
-		$('#separator').attr('class', '');
-		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '5');
-		$('#navigation_page').append(' 5 ');
+		document.getElementById("navigation_back").className = "";
+		document.getElementById("separator").className = "";
+		document.getElementById("navigation_forward").className = "";
+		document.getElementById("res").className = "5";
 	}
 	else if(start == 50) {
-		$('#navigation_back').attr('class', '');
-		$('#separator').attr('class', '');
-		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '6');
-		$('#navigation_page').append(' 6 ');
+		document.getElementById("navigation_back").className = "";
+		document.getElementById("separator").className = "";
+		document.getElementById("navigation_forward").className = "";
+		document.getElementById("res").className = "6";
 	}
 	else if(start == 60) {
-		$('#navigation_back').attr('class', '');
-		$('#separator').attr('class', '');
-		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '7');
-		$('#navigation_page').append(' 7 ');
+		document.getElementById("navigation_back").className = "";
+		document.getElementById("separator").className = "";
+		document.getElementById("navigation_forward").className = "";
+		document.getElementById("res").className = "7";
 	}
 	else if(start == 70) {
-		$('#navigation_back').attr('class', '');
-		$('#separator').attr('class', '');
-		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '8');
-		$('#navigation_page').append(' 8 ');
+		document.getElementById("navigation_back").className = "";
+		document.getElementById("separator").className = "";
+		document.getElementById("navigation_forward").className = "";
+		document.getElementById("res").className = "8";
 	}
 	else if(start == 80) {
-		$('#navigation_back').attr('class', '');
-		$('#separator').attr('class', '');
-		$('#navigation_forward').attr('class', '');
-		$('#res').attr('class', '9');
-		$('#navigation_page').append(' 9 ');
+		document.getElementById("navigation_back").className = "";
+		document.getElementById("separator").className = "";
+		document.getElementById("navigation_forward").className = "";
+		document.getElementById("res").className = "9";
 	}
 	else {
-		$('#navigation_back').attr('class', '');
-		$('#separator').attr('class', 'hidden');
-		$('#navigation_forward').attr('class', 'hidden');
-		$('#res').attr('class', '10');
-		$('#navigation_page').append(' 10 ');
+		document.getElementById("navigation_back").className = "";
+		document.getElementById("separator").className = "hidden";
+		document.getElementById("navigation_forward").className = "hidden";
+		document.getElementById("res").className = "10";
 	}
 	/* ...and then, scroll to top of the page */
-	$('html,body').scrollTop(0);
+	window.scrollTo(0,0);
+}
+
+function clickableLinks(db) {
+	var links = document.querySelectorAll(".link");
+	for(var i = 0; i < links.length; i++) {
+		links[i].onclick = function() {
+			db.read(this.id);
+			fetchArticle(this.id);
+			document.querySelector("[data-type='sidebar']").className = "hidden";
+			document.querySelector("[data-position='right']").className = "current";
+			document.querySelector("[data-position='current']").className = "left";
+		};
+	} 
 }
