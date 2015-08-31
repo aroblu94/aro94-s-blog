@@ -15,7 +15,8 @@ window.onload = function() {
 
 	isDebug(debug, db, document);
 	populatingDB(db);
-	if(first) {
+	// Check if first launch from Firefox OS
+	if(first && navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf("Mobile") > -1) {
 		alert("Benvenuto! Essendo il primo avvio, l'app si riavvierà automaticamente per leggere correttamente il database. Premi 'OK' per continuare.");
 		/* 1st method */
 		first = false;

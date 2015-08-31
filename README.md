@@ -48,6 +48,9 @@ New `Contatti` page
 No more `mozActivity` for external links - now using `target="_blank"`   
 Bug Fix   
 All code re-written: no more jQuery, all Javascript Vanilla! (better performances)   
+- __v2.1__   
+Fixed gaia-icons   
+First start on Android *should* be fixed now
 
 ##To-Do   
 - Push notifications for new contents   
